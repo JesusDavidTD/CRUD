@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentes Sanas - Admin Panel</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Pantalla de Inicio de Sesión -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" required>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <p id="loginError" style="color: red; display: none;">Usuario o contraseña incorrectos.</p>
+        </div>
+    </div>
+
+    <!-- Panel de Administración -->
+    <div id="adminPanel" class="wrapper" style="display: none;">
+        <!-- Menú Lateral -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h3>Mentes Sanas</h3>
+                <p>Admin Panel</p>
+            </div>
+            <ul>
+                <li id="resourcesMenu"><a href="#" onclick="showSection('resourceSection')"><i class="fas fa-book"></i> Recursos</a></li>
+                <li id="usersMenu"><a href="#" onclick="showSection('userSection')"><i class="fas fa-users"></i> Usuarios</a></li>
+                <li id="superadminMenu" style="display: none;"><a href="#" onclick="showSection('superadminSection')"><i class="fas fa-user-shield"></i> Gestión Total</a></li>
+            </ul>
+        </div>
+
+        <!-- Contenido Principal -->
+        <div class="main-content">
+            <!-- Barra Superior -->
+            <div class="topbar">
+                <div class="topbar-left">
+                    <h2>Panel de Administración</h2>
+                </div>
+                <div class="topbar-right">
+                    <span id="currentUser"></span>
+                    <i class="fas fa-user-circle"></i>
+                    <button onclick="logout()">Cerrar Sesión</button>
+                </div>
+            </div>
+
+            <!-- Sección de Recursos (Admin y Superadmin) -->
+            <div id="resourceSection" class="section" style="display: none;">
+                <h2>Gestión de Recursos</h2>
+                <div class="table-header">
+                    <button onclick="showResourceForm()">Agregar Nuevo</button>
+                    <input type="text" placeholder="Buscar..." onkeyup="searchTable('resourceTable', this.value)">
+                </div>
+                <form id="resourceForm" style="display: none;">
+                    <input type="hidden" id="resourceId">
+                    <label for="resourceTitle">Título:</label>
+                    <input type="text" id="resourceTitle" required>
+                    <label for="resourceDescription">Descripción:</label>
+                    <textarea id="resourceDescription" required></textarea>
+                    <button type="submit">Guardar</button>
+                    <button type="button" id="cancelResourceEdit">Cancelar</button>
+                </form>
+                <table id="resourceTable">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resourceList"></tbody>
+                </table>
+                <div class="pagination">
+                    <span>Resultados 1 a 10 de 10</span>
+                    <button onclick="prevPage()">❮</button>
+                    <span>1</span>
+                    <button onclick="nextPage()">❯</button>
+                </div>
+            </div>
+
+            <!-- Sección de Usuarios (Admin y Superadmin) -->
+            <div id="userSection" class="section" style="display: none;">
+                <h2>Gestión de Usuarios (Aprendices)</h2>
+                <div class="table-header">
+                    <button onclick="showUserForm()">Agregar Nuevo</button>
+                    <input type="text" placeholder="Buscar..." onkeyup="searchTable('userTable', this.value)">
+                </div>
+                <form id="userForm" style="display: none;">
+                    <input type="hidden" id="userId">
+                    <label for="userName">Nombre:</label>
+                    <input type="text" id="userName" required>
+                    <label for="userEmail">Correo:</label>
+                    <input type="email" id="userEmail" required>
+                    <button type="submit">Guardar</button>
+                    <button type="button" id="cancelUserEdit">Cancelar</button>
+                </form>
+                <table id="userTable">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userList"></tbody>
+                </table>
+                <div class="pagination">
+                    <span>Resultados 1 a 10 de 10</span>
+                    <button onclick="prevPage()">❮</button>
+                    <span>1</span>
+                    <button onclick="nextPage()">❯</button>
+                </div>
+            </div>
+<!-- Sección de Usuarios (Admin y Superadmin) -->
+<div id="userSection" class="section" style="display: none;">
+    <h2>Gestión de Usuarios</h2>
+    <h3>Aprendices</h3>
+    <div class="table-header">
+        <button onclick="showUserForm()">Agregar Nuevo</button>
+        <input type="text" placeholder="Buscar..." onkeyup="searchTable('userTable', this.value)">
+    </div>
+    <form id="userForm" style="display: none;">
+        <input type="hidden" id="userId">
+        <label for="userName">Nombre:</label>
+        <input type="text" id="userName" required>
+        <label for="userEmail">Correo:</label>
+        <input type="email" id="userEmail" required>
+        <button type="submit">Guardar</button>
+        <button type="button" id="cancelUserEdit">Cancelar</button>
+    </form>
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="userList"></tbody>
+    </table>
+    <h3>Administradores (Solo Lectura)</h3>
+    <div class="table-header">
+        <input type="text" placeholder="Buscar..." onkeyup="searchTable('adminTableForAdmin', this.value)">
+    </div>
+    <table id="adminTableForAdmin">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="adminListForAdmin"></tbody>
+    </table>
+    <div class="pagination">
+        <span>Resultados 1 a 10 de 10</span>
+        <button onclick="prevPage()">❮</button>
+        <span>1</span>
+        <button onclick="nextPage()">❯</button>
+    </div>
+</div>
+            <!-- Sección de Superadministradores (Solo Superadmin) -->
+            <div id="superadminSection" class="section" style="display: none;">
+                <h2>Gestión de Todos los Usuarios</h2>
+                <h3>Aprendices</h3>
+                <div class="table-header">
+                    <input type="text" placeholder="Buscar..." onkeyup="searchTable('apprenticeTable', this.value)">
+                </div>
+                <table id="apprenticeTable">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="apprenticeList"></tbody>
+                </table>
+                <h3>Administradores</h3>
+                <div class="table-header">
+                    <input type="text" placeholder="Buscar..." onkeyup="searchTable('adminTable', this.value)">
+                </div>
+                <table id="adminTable">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminList"></tbody>
+                </table>
+                <h3>Superadministradores</h3>
+                <div class="table-header">
+                    <input type="text" placeholder="Buscar..." onkeyup="searchTable('superadminTable', this.value)">
+                </div>
+                <table id="superadminTable">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="superadminList"></tbody>
+                </table>
+                <div class="pagination">
+                    <span>Resultados 1 a 10 de 10</span>
+                    <button onclick="prevPage()">❮</button>
+                    <span>1</span>
+                    <button onclick="nextPage()">❯</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/crup.js"></script>
+</body>
+</html>

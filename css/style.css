@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F9FBFC;
+}
+
+/* Estilos para la pantalla de inicio de sesión */
+.login-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #3498DB 0%, #2ECC71 100%);
+}
+
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #2C3E50;
+    font-weight: 600;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-container label {
+    font-weight: 500;
+    color: #34495E;
+}
+
+.login-container input {
+    padding: 12px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.login-container input:focus {
+    border-color: #3498DB;
+    outline: none;
+}
+
+.login-container button {
+    padding: 12px;
+    background-color: #2ECC71;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #27AE60;
+}
+
+/* Estilos del panel de administración */
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2C3E50;
+    color: white;
+    padding-top: 30px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #34495E;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.sidebar-header p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #BDC3C7;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li:hover {
+    background-color: #34495E;
+}
+
+.sidebar ul li a {
+    color: #ECF0F1;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.sidebar ul li a:hover {
+    color: #3498DB;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2ECC71;
+    color: white;
+    padding: 15px 25px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.topbar-left h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.topbar-right span {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.topbar-right button {
+    padding: 8px 15px;
+    background-color: #E74C3C;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.topbar-right button:hover {
+    background-color: #C0392B;
+}
+
+.topbar-right i {
+    font-size: 24px;
+}
+
+.section {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+h2, h3 {
+    color: #2C3E50;
+    font-weight: 500;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table-header button {
+    padding: 10px 20px;
+    background-color: #3498DB;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.table-header button:hover {
+    background-color: #2980B9;
+}
+
+.table-header input {
+    padding: 10px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 200px;
+    transition: border-color 0.3s ease;
+}
+
+.table-header input:focus {
+    border-color: #3498DB;
+    outline: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+    background-color: #F4F6F9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+label {
+    font-weight: 500;
+    color: #34495E;
+}
+
+input, textarea, select {
+    padding: 10px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #3498DB;
+    outline: none;
+}
+
+button {
+    padding: 10px;
+    background-color: #2ECC71;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #27AE60;
+}
+
+button[type="button"] {
+    background-color: #E74C3C;
+}
+
+button[type="button"]:hover {
+    background-color: #C0392B;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+th {
+    background-color: #2C3E50;
+    color: white;
+    font-weight: 500;
+}
+
+tr:nth-child(even) {
+    background-color: #ECF0F1;
+}
+
+tr:hover {
+    background-color: #F4F6F9;
+}
+
+td button {
+    padding: 6px 10px;
+    margin-right: 5px;
+    border-radius: 6px;
+}
+
+.edit-btn {
+    background-color: #F1C40F;
+}
+
+.edit-btn:hover {
+    background-color: #D4AC0D;
+}
+
+.delete-btn {
+    background-color: #E74C3C;
+}
+
+.delete-btn:hover {
+    background-color: #C0392B;
+}
+
+.view-btn {
+    background-color: #3498DB;
+}
+
+.view-btn:hover {
+    background-color: #2980B9;
+}
+
+#adminTableForAdmin th {
+    background-color: #7F8C8D; /* Gris para indicar que es de solo lectura */
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #7F8C8D;
+}
+
+.pagination button {
+    background-color: #3498DB;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.pagination button:hover {
+    background-color: #2980B9;
+}
