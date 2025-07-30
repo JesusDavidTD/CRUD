@@ -6,7 +6,7 @@ let users = [
     { id: 2, name: "Ana Gómez", email: "ana@mentesanas.com", role: "admin", password: "admin123" },
     { id: 3, name: "Luis Martínez", email: "luis@mentesanas.com", role: "superadmin", password: "super123" },
     { id: 4, name: "María López", email: "maria@mentesanas.com", role: "admin", password: "admin456" },
-    { id: 5, name:"Montenegro1", email: "Montenegro1@mentesanas.com", role: "admin", password: "Montenegro123" }, // Nuevo administrador para probar
+    { id: 5, name:"Montenegro1", email: "Montenegro1@mentesanas.com", role: "user", password: "Montenegro123" }, // Nuevo administrador para probar
     { id: 6, name:"Montenegro2", email: "Montenegro2@mentesanas.com", role: "superadmin", password: "Montenegro1234"}
 ];
 
