@@ -2,7 +2,7 @@
 let posts = [];
 let resources = [];
 let users = [
-    { id: 1, name: "Juan Pérez", email: "juan@mentesanas.com", role: "user", password: null },
+    { id: 1, name: "Juan Pérez", email: "juan@mentesanas.com", role: "user", password: "123" },
     { id: 2, name: "Ana Gómez", email: "ana@mentesanas.com", role: "admin", password: "admin123" },
     { id: 3, name: "Luis Martínez", email: "luis@mentesanas.com", role: "superadmin", password: "super123" },
     { id: 4, name: "María López", email: "maria@mentesanas.com", role: "admin", password: "admin456" },
